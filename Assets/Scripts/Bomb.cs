@@ -6,21 +6,32 @@ using Mirror;
 public class Bomb : NetworkBehaviour
 {
     public float explosionRadius = 2f;
-
+    public float explosionDelay = 2f;
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, explosionRadius);
     }
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        StartCoroutine(Explode());
     }
+    public IEnumerator Explode()
+    {
+        yield return new WaitForSeconds(explosionDelay);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        CmdExplode(transform.position, explosionRadius);
+        Destroy(gameObject);
+
     }
+    [Command]
+    void CmdExplode(Vector3 position, float radius)
+    {
+        Collider[] hits = Physics.OverlapSphere(transform.position, explosionRadius);
+        foreach (var hit in hits)
+        {
+            NetworkServer.Destroy(hit.gameObject);
+        }
+    }
+    
 }
