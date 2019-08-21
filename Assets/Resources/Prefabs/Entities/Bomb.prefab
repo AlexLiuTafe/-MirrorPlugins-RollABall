@@ -93,6 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syncInterval: 0.1
+  enemyTag: Enemy
   explosionRadius: 2
   explosionDelay: 2
 --- !u!114 &1171348218238733559

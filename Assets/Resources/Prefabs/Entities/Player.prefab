@@ -84,8 +84,8 @@ MonoBehaviour:
     type: 3}
   attachedCamera: {fileID: 6732022968011675235}
   attachedVirtualCamera: {fileID: 7348150859596438646}
-  speed: 10
-  jump: 10
+  speed: 5
+  jump: 5
   ignoreLayers:
     serializedVersion: 2
     m_Bits: 0
