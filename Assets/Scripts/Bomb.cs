@@ -21,7 +21,7 @@ public class Bomb : NetworkBehaviour
         yield return new WaitForSeconds(explosionDelay);
 
         CmdExplode(transform.position, explosionRadius);
-        Destroy(gameObject);
+        
 
     }
     [Command]
@@ -31,6 +31,7 @@ public class Bomb : NetworkBehaviour
         foreach (var hit in hits)
         {
             NetworkServer.Destroy(hit.gameObject);
+            Destroy(gameObject);
         }
     }
     

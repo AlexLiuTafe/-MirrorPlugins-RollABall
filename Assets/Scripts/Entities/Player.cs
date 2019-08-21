@@ -65,15 +65,15 @@ public class Player : NetworkBehaviour // NETWORKBEHAVIOUR FOR NETWORKING
     {
         if (isLocalPlayer)
         {
-            if(Input.GetKeyDown(KeyCode.Space))
+            
+            float inputH = Input.GetAxis("Horizontal");
+            float inputV = Input.GetAxis("Vertical");
+            Move(inputH, inputV);
+            if(Input.GetKeyDown(KeyCode.F))
             {
                 //Spawn bomb on server
                 CmdSpawnBomb(transform.position);
             }
-            float inputH = Input.GetAxis("Horizontal");
-            float inputV = Input.GetAxis("Vertical");
-            Move(inputH, inputV);
-
             if (Input.GetButtonDown("Jump"))
             {
                 Jump();
